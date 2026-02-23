@@ -23,10 +23,11 @@ public class Main {
         try {
             System.out.println(sale2.calculateTotal());
         } catch (EmptySaleException e) {
-            throw new RuntimeException(e);
+            System.out.println(e.getMessage());
         }
 
-
+        Product lastProduct = sale1.getLastProduct();
+        System.out.println(lastProduct);
 
     }
 }

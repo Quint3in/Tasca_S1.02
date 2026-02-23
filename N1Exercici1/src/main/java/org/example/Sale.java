@@ -8,10 +8,21 @@ public class Sale {
     private ArrayList<Product> products;
     private double totalPrice;
 
-    public Sale() {};
+    public Sale() {
+        products = new ArrayList<>();
+    };
 
     public void addProduct(Product product) {
         products.add(product);
+    }
+
+    //Test indexOutOfBoundsException
+    public Product getLastProduct() {
+        try{
+            return products.get(100);
+        } catch(IndexOutOfBoundsException e){
+            throw new IndexOutOfBoundsException("Producte fora de la llista.");
+        }
     }
 
     public double getTotalPrice() {
