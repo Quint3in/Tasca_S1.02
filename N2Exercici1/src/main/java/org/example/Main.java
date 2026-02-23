@@ -8,5 +8,9 @@ public class Main {
         readInt("Introdueix un número int: ");
         readFloat("Introdueix un número float: ");
         readByte("Introdueix un byte: ");
+
+        readChar("Introdueix un char: ");
+        readString("Introdueix un String: ");
+        readYesNo("Introdueix s/n: ");
     }
 }
