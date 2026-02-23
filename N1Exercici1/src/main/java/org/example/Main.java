@@ -15,7 +15,7 @@ public class Main {
         try {
             System.out.println(sale1.calculateTotal());
         } catch (EmptySaleException e) {
-            throw new RuntimeException(e);
+            System.out.println("ERROR: "+e.getMessage());
         }
 
         Sale sale2 = new Sale();
@@ -23,7 +23,7 @@ public class Main {
         try {
             System.out.println(sale2.calculateTotal());
         } catch (EmptySaleException e) {
-            System.out.println(e.getMessage());
+            System.out.println("ERROR: "+e.getMessage());
         }
 
         Product lastProduct = sale1.getLastProduct();
