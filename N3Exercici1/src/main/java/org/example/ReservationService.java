@@ -12,6 +12,7 @@ public class ReservationService {
     private int totalRows;
     private int seatsPerRow;
     private List<Seat> seats;
+    private final String PERSONNAME_REGEX = "^[\\p{L} ]+$";
 
     public ReservationService(int totalRows, int seatsPerRow) {
         this.totalRows = totalRows;
@@ -19,7 +20,10 @@ public class ReservationService {
         this.seats = new ArrayList<>();
     }
 
-    public void reserveSeat(int row, int seat, String name) throws SeatAlreadyTakenException, InvalidSeatException {
+    public void reserveSeat(int row, int seat, String name) throws SeatAlreadyTakenException, InvalidSeatException, InvalidPersonNameException {
+        if(!name.trim().matches(PERSONNAME_REGEX)) {
+            throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
+        }
         if (validateSeatPosition(row, seat)) {
             if(seats.stream().noneMatch(s -> s.getRow() == row && s.getSeat() == seat)) {
                 this.seats.add(new Seat(row, seat, name));
@@ -38,6 +42,9 @@ public class ReservationService {
 
     }
     public void cancelAllByPerson(String name) throws InvalidPersonNameException {
+        if(!name.trim().matches(PERSONNAME_REGEX)) {
+            throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
+        }
         if (!seats.removeIf(s -> s.getPersonName().equals(name))) {
             throw new InvalidPersonNameException("Cap butaca reservada amb aquest nom.");
         }
@@ -46,6 +53,9 @@ public class ReservationService {
         return seats;
     }
     public List<Seat> getSeatsByPerson(String name) throws InvalidPersonNameException {
+        if(!name.trim().matches(PERSONNAME_REGEX)) {
+            throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
+        }
         List<Seat> seatsByPerson = new ArrayList<Seat>();
         for (Seat seat : seats) {
             if(seat.getPersonName().equals(name)) {

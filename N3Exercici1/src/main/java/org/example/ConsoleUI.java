@@ -97,7 +97,7 @@ public class ConsoleUI {
         try {
             reservationService.reserveSeat(row, seat, person);
             System.out.println("Butaca reservada.");
-        } catch (SeatAlreadyTakenException | InvalidSeatException e) {
+        } catch (SeatAlreadyTakenException | InvalidSeatException | InvalidPersonNameException e) {
             System.out.println(e.getMessage());
         }
     }
