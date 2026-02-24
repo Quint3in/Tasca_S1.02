@@ -37,10 +37,10 @@ public class Seat {
 
     @Override
     public String toString() {
-        return "Seat{" +
-                "row=" + row +
-                ", seat=" + seat +
-                ", personName='" + personName + '\'' +
+        return "Butaca{" +
+                "fila=" + row +
+                ", número=" + seat +
+                ", a nom de='" + personName + '\'' +
                 '}';
     }
 }

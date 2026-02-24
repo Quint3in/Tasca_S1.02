@@ -1,7 +1,9 @@
 package org.example;
 
-import org.example.Exceptions.SeatAlreadyReservedException;
-import org.example.Exceptions.SeatPositionOutOfRangeException;
+import org.example.Exceptions.InvalidPersonNameException;
+import org.example.Exceptions.SeatAlreadyEmptyException;
+import org.example.Exceptions.SeatAlreadyTakenException;
+import org.example.Exceptions.InvalidSeatException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,51 +19,50 @@ public class ReservationService {
         this.seats = new ArrayList<>();
     }
 
-    public void reserveSeat(int row, int seat, String name) {
+    public void reserveSeat(int row, int seat, String name) throws SeatAlreadyTakenException, InvalidSeatException {
         if (validateSeatPosition(row, seat)) {
-            this.seats.add(new Seat(row, seat, name));
-        }
-    }
-    public void cancelSeat(int row, int seat) {
-        for (Seat s : seats) {
-            if (s.getRow() == row && s.getSeat() == seat) {
-                seats.remove(s);
+            if(seats.stream().noneMatch(s -> s.getRow() == row && s.getSeat() == seat)) {
+                this.seats.add(new Seat(row, seat, name));
+            } else {
+                throw new SeatAlreadyTakenException("Butaca ja reservada.");
             }
+
         }
     }
-    public void cancelAllByPerson(String name) {
-        for (Seat s : seats) {
-            if(s.getPersonName().equals(name)) {
-                seats.remove(s);
+    public void cancelSeat(int row, int seat) throws SeatAlreadyEmptyException, InvalidSeatException {
+        if (validateSeatPosition(row, seat)) {
+            if (!seats.removeIf(s -> s.getRow() == row && s.getSeat() == seat)) {
+                throw new SeatAlreadyEmptyException("Butaca ja buida.");
             }
         }
 
+    }
+    public void cancelAllByPerson(String name) throws InvalidPersonNameException {
+        if (!seats.removeIf(s -> s.getPersonName().equals(name))) {
+            throw new InvalidPersonNameException("Cap butaca reservada amb aquest nom.");
+        }
     }
     public List<Seat> getAllSeats() {
         return seats;
     }
-    public List<Seat> getSeatsByPerson(String name) {
+    public List<Seat> getSeatsByPerson(String name) throws InvalidPersonNameException {
         List<Seat> seatsByPerson = new ArrayList<Seat>();
         for (Seat seat : seats) {
             if(seat.getPersonName().equals(name)) {
                 seatsByPerson.add(seat);
-            };
+            }
+        }
+        if (seatsByPerson.isEmpty()) {
+            throw new InvalidPersonNameException("Cap butaca reservada amb aquest nom.");
         }
         return seatsByPerson;
     }
 
-    private boolean validateSeatPosition(int row, int seat) {
-        if ((row < 0 || row >= totalRows) &&
-                (seat < 0 || seat >= seatsPerRow)) {
-            for (Seat seatRes : seats) {
-                if (seatRes.getRow() == row && seatRes.getSeat() == seat) {
-                    throw new SeatAlreadyReservedException("Butaca ja reservada.");
-                    //return false;
-                }
-            }
-        } else {
-            throw new SeatPositionOutOfRangeException("Fora de rang.");
+    private boolean validateSeatPosition(int row, int seat) throws InvalidSeatException {
+        if ((row < 1 || row > totalRows) &&
+                (seat < 1 || seat > seatsPerRow)) {
+            throw new InvalidSeatException("Fora de rang.");
         }
-        return true; //perfecte reservable
+        return true;
     }
 }
