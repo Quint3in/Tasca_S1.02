@@ -27,6 +27,17 @@ Evitar que l’aplicació es tanqui per errors d’entrada de l’usuari/ària.
 Pràctica amb excepcions estàndard (InputMismatchException) i personalitzades.
 Consolidar l’ús de mètodes estàtics per facilitar la reutilització del codi.
 
+## Nivell 3 Exercici 1
+**Descripció**:
+Una empresa de cinemes et demana que desenvolupis una 
+aplicació per gestionar la reserva de seients a les 
+seves sales. Aquesta aplicació serà utilitzada pels 
+venedors/es a l’hora de vendre entrades.
+
+Quan l’aplicació s’executa, primer demanarà quantes 
+files i quants seients per fila té la sala. Un cop 
+inicialitzada, es mostrarà el següent menú:
+
 ## 🛠 Tecnologies
 - Backend: Java
 
