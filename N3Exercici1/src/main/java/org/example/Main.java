@@ -1,7 +1,5 @@
 package org.example;
 
-import java.io.Console;
-
 import static org.example.utils.ConsoleInput.readInt;
 
 

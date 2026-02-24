@@ -1,9 +1,9 @@
 package org.example;
 
 public class Seat {
-    private int row;
-    private int seat;
-    private String personName;
+    private final int row;
+    private final int seat;
+    private final String personName;
 
     public Seat(int row, int seat, String personName) {
         this.row = row;
@@ -15,24 +15,12 @@ public class Seat {
         return row;
     }
 
-    public void setRow(int row) {
-        this.row = row;
-    }
-
     public int getSeat() {
         return seat;
     }
 
-    public void setSeat(int seat) {
-        this.seat = seat;
-    }
-
     public String getPersonName() {
         return personName;
-    }
-
-    public void setPersonName(String personName) {
-        this.personName = personName;
     }
 
     @Override

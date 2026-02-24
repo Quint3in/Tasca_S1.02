@@ -10,7 +10,7 @@ import static org.example.utils.ConsoleInput.readInt;
 import static org.example.utils.ConsoleInput.readNonEmptyString;
 
 public class ConsoleUI {
-    private ReservationService reservationService;
+    private final ReservationService reservationService;
     boolean running;
 
     public ConsoleUI(ReservationService reservationService) {
@@ -32,22 +32,23 @@ public class ConsoleUI {
     }
 
     private void showMenu() {
-        System.out.println("1.- Mostrar totes les butaques reservades.\n" +
-                "2.- Mostrar les butaques reservades per una persona.\n" +
-                "3.- Reservar una butaca.\n" +
-                "4.- Anul-lar la reserva d'una butaca.\n" +
-                "5.- Anul-lar totes les reserves d'una persona.\n" +
-                "0.- Sortir.");
+        System.out.println("""
+                1.- Mostrar totes les butaques reservades.
+                2.- Mostrar les butaques reservades per una persona.
+                3.- Reservar una butaca.
+                4.- Anul-lar la reserva d'una butaca.
+                5.- Anul-lar totes les reserves d'una persona.
+                0.- Sortir.""");
     }
 
     private int readMenuOption() {
         while (true) {
             showMenu();
-            int option = readInt("Escull una opcio (0-5): ");
+            int option = readInt("Escull una opció (0-5): ");
             if (option >= 0 && option <= 5) {
                 return option;
             }
-            System.out.println("Opcio no valida.");
+            System.out.println("Opció no valida.");
         }
     }
 

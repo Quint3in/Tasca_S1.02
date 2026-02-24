@@ -9,10 +9,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ReservationService {
-    private int totalRows;
-    private int seatsPerRow;
-    private List<Seat> seats;
-    private final String PERSONNAME_REGEX = "^[\\p{L} ]+$";
+    private final int totalRows;
+    private final int seatsPerRow;
+    private final List<Seat> seats;
+    private final String PERSON_NAME_REGEX = "^[\\p{L} ]+$";
 
     public ReservationService(int totalRows, int seatsPerRow) {
         this.totalRows = totalRows;
@@ -21,7 +21,7 @@ public class ReservationService {
     }
 
     public void reserveSeat(int row, int seat, String name) throws SeatAlreadyTakenException, InvalidSeatException, InvalidPersonNameException {
-        if(!name.trim().matches(PERSONNAME_REGEX)) {
+        if(!name.trim().matches(PERSON_NAME_REGEX)) {
             throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
         }
         if (validateSeatPosition(row, seat)) {
@@ -42,7 +42,7 @@ public class ReservationService {
 
     }
     public void cancelAllByPerson(String name) throws InvalidPersonNameException {
-        if(!name.trim().matches(PERSONNAME_REGEX)) {
+        if(!name.trim().matches(PERSON_NAME_REGEX)) {
             throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
         }
         if (!seats.removeIf(s -> s.getPersonName().equals(name))) {
@@ -53,10 +53,10 @@ public class ReservationService {
         return seats;
     }
     public List<Seat> getSeatsByPerson(String name) throws InvalidPersonNameException {
-        if(!name.trim().matches(PERSONNAME_REGEX)) {
+        if(!name.trim().matches(PERSON_NAME_REGEX)) {
             throw new InvalidPersonNameException("Nom invàlid, nomès lletres y espais.");
         }
-        List<Seat> seatsByPerson = new ArrayList<Seat>();
+        List<Seat> seatsByPerson = new ArrayList<>();
         for (Seat seat : seats) {
             if(seat.getPersonName().equals(name)) {
                 seatsByPerson.add(seat);
