@@ -8,8 +8,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleReader {
-    static Scanner scanner = new Scanner(System.in);
+    final static private Scanner scanner = new Scanner(System.in);
     final static private String ERROR_MESSAGE = "Error de format. Torna-ho a provar.";
+    final static private int MAX_STRING_LENGTH = 20;
 
     public static int readInt(String message) {
         while (true) {
@@ -82,7 +83,7 @@ public class ConsoleReader {
             System.out.println(message);
             var str = scanner.nextLine().trim();
             try {
-                if (!str.isEmpty() && str.length() <= 20) {
+                if (!str.isEmpty() && str.length() <= MAX_STRING_LENGTH) {
                     return str;
                 } else {
                     throw new StringValidationException("(String)" + ERROR_MESSAGE);
