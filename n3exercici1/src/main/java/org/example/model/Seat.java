@@ -1,4 +1,4 @@
-package org.example;
+package org.example.model;
 
 public class Seat {
     private final int row;
@@ -27,7 +27,7 @@ public class Seat {
     public String toString() {
         return "Butaca{" +
                 "fila=" + row +
-                ", número=" + seat +
+                ", numero=" + seat +
                 ", a nom de='" + personName + '\'' +
                 '}';
     }

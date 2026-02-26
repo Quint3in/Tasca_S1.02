@@ -1,25 +1,26 @@
-package org.example;
+package org.example.menu;
 
 import org.example.exceptions.InvalidPersonNameException;
+import org.example.exceptions.InvalidSeatException;
 import org.example.exceptions.SeatAlreadyEmptyException;
 import org.example.exceptions.SeatAlreadyTakenException;
-import org.example.exceptions.InvalidSeatException;
+import org.example.service.ReservationService;
 
 import static org.example.utils.ConsoleInput.pressEnterToContinue;
 import static org.example.utils.ConsoleInput.readInt;
 import static org.example.utils.ConsoleInput.readNonEmptyString;
 
-public class ConsoleUI {
+public class ConsoleMenu {
     private final ReservationService reservationService;
-    boolean running;
+    private boolean running;
 
-    public ConsoleUI(ReservationService reservationService) {
-        running = false;
+    public ConsoleMenu(ReservationService reservationService) {
         this.reservationService = reservationService;
     }
 
     public void start() {
         running = true;
+
         while (running) {
             int option = readMenuOption();
             handleOption(option);
@@ -44,11 +45,11 @@ public class ConsoleUI {
     private int readMenuOption() {
         while (true) {
             showMenu();
-            int option = readInt("Escull una opció (0-5): ");
+            int option = readInt("Escull una opcio (0-5): ");
             if (option >= 0 && option <= 5) {
                 return option;
             }
-            System.out.println("Opció no valida.");
+            System.out.println("Opcio no valida.");
         }
     }
 
@@ -75,7 +76,7 @@ public class ConsoleUI {
                 pressEnterToContinue();
             }
             case 0 -> stop();
-            default -> System.out.println("Opció no vàlida.");
+            default -> System.out.println("Opcio no valida.");
         }
     }
 
@@ -85,7 +86,8 @@ public class ConsoleUI {
 
     private void showSeatsByPerson() {
         try {
-            reservationService.getSeatsByPerson(readNonEmptyString("Introdueix el nom de la persona:")).forEach(System.out::println);
+            String person = readNonEmptyString("Introdueix el nom de la persona:");
+            reservationService.getSeatsByPerson(person).forEach(System.out::println);
         } catch (InvalidPersonNameException e) {
             System.out.println(e.getMessage());
         }
@@ -95,6 +97,7 @@ public class ConsoleUI {
         int row = readInt("Introdueix el numero de la fila:");
         int seat = readInt("Introdueix el numero de la butaca:");
         String person = readNonEmptyString("Introdueix el nom de la persona:");
+
         try {
             reservationService.reserveSeat(row, seat, person);
             System.out.println("Butaca reservada.");
@@ -106,6 +109,7 @@ public class ConsoleUI {
     private void cancelSeat() {
         int row = readInt("Introdueix el numero de la fila:");
         int seat = readInt("Introdueix el numero de la butaca:");
+
         try {
             reservationService.cancelSeat(row, seat);
             System.out.println("Butaca cancelada.");
@@ -122,6 +126,5 @@ public class ConsoleUI {
         } catch (InvalidPersonNameException e) {
             System.out.println(e.getMessage());
         }
-
     }
 }
