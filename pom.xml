@@ -9,9 +9,9 @@
     <version>1.0-SNAPSHOT</version>
     <packaging>pom</packaging>
     <modules>
-        <module>N1Exercici1</module>
-        <module>N2Exercici1</module>
-        <module>N3Exercici1</module>
+        <module>n1exercici1</module>
+        <module>n2exercici1</module>
+        <module>n3exercici1</module>
     </modules>
 
     <properties>

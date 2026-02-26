@@ -9,7 +9,7 @@
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>N1Exercici1</artifactId>
+    <artifactId>n2exercici1</artifactId>
 
     <properties>
         <maven.compiler.source>25</maven.compiler.source>
