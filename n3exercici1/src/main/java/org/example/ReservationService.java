@@ -1,9 +1,9 @@
 package org.example;
 
-import org.example.Exceptions.InvalidPersonNameException;
-import org.example.Exceptions.SeatAlreadyEmptyException;
-import org.example.Exceptions.SeatAlreadyTakenException;
-import org.example.Exceptions.InvalidSeatException;
+import org.example.exceptions.InvalidPersonNameException;
+import org.example.exceptions.SeatAlreadyEmptyException;
+import org.example.exceptions.SeatAlreadyTakenException;
+import org.example.exceptions.InvalidSeatException;
 
 import java.util.ArrayList;
 import java.util.List;

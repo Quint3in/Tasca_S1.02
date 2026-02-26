@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class InvalidSeatException extends RuntimeException {
     public InvalidSeatException(String message) {

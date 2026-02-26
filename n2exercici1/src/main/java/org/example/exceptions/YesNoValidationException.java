@@ -1,4 +1,4 @@
-package org.example.Exceptions;
+package org.example.exceptions;
 
 public class YesNoValidationException extends RuntimeException {
     public YesNoValidationException(String message) {

@@ -1,8 +1,8 @@
 package org.example;
 
-import org.example.Exceptions.CharValidationException;
-import org.example.Exceptions.StringValidationException;
-import org.example.Exceptions.YesNoValidationException;
+import org.example.exceptions.CharValidationException;
+import org.example.exceptions.StringValidationException;
+import org.example.exceptions.YesNoValidationException;
 
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -105,7 +105,7 @@ public class ConsoleReader {
                 } else {
                     throw new YesNoValidationException("(YesNo)"+ERROR_MESSAGE);
                 }
-            }catch (YesNoValidationException e) {
+            } catch (YesNoValidationException e) {
                 System.out.println(e.getMessage());
             }
         }
