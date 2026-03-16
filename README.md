@@ -1,46 +1,48 @@
-# Tasca S1.02
+﻿# Task S1.02
 
-## Nivell 1 Exercici 1
-**Descripció**:
-Crear una excepció personalitzada i saber com es llença i es captura.
-Treballar amb col·leccions (ArrayList<Product>) i càlculs sobre dades.
-Detectar i gestionar errors habituals com IndexOutOfBoundsException.
+## Level 1 Exercise 1
+**Description**:
+Create a custom exception and know how to throw and catch it.
+Work with collections (ArrayList<Product>) and calculations on data.
+Detect and handle common errors such as IndexOutOfBoundsException.
 
+## 🧩 Questions
 
-## 🧩 Preguntes
+Do you know what this means? What is the difference between
+a checked exception and an unchecked one
+like RuntimeException?
 
-Saps què significa això? Quina diferència hi ha entre 
-una excepció verificada (checked) i una no verificada 
-(unchecked) com RuntimeException?
+***Checked exceptions are external and
+predictable problems; you have to handle them yourself, and the compiler
+forces you to do so.***
 
-***Les excepcions verificades són problemes externs i 
-previsibles, has de controlarlos tu mateix, el compilador
-t'obliga a fer-ho.***
+***Unchecked exceptions are programming errors
+at runtime.***
 
-***En canvi, les excepcions no verificades són errors de
-programació en temps d'execució.***
+## Level 2 Exercise 1
+**Description**:
+Learn to catch and handle exceptions when entering data from the keyboard.
+Prevent the application from closing due to user input errors.
+Practice with standard (InputMismatchException) and custom exceptions.
+Consolidate the use of static methods to facilitate code reuse.
 
-## Nivell 2 Exercici 1
-**Descripció**:
-Aprendre a capturar i gestionar excepcions a l’hora d’introduir dades per teclat.
-Evitar que l’aplicació es tanqui per errors d’entrada de l’usuari/ària.
-Pràctica amb excepcions estàndard (InputMismatchException) i personalitzades.
-Consolidar l’ús de mètodes estàtics per facilitar la reutilització del codi.
+## Level 3 Exercise 1
+**Description**:
+A cinema company asks you to develop an
+application to manage seat reservations in its theaters.
+This application will be used by ticket sellers when selling tickets.
 
-## Nivell 3 Exercici 1
-**Descripció**:
-Una empresa de cinemes et demana que desenvolupis una 
-aplicació per gestionar la reserva de seients a les 
-seves sales. Aquesta aplicació serà utilitzada pels 
-venedors/es a l’hora de vendre entrades.
+When the application runs, it will first ask how many
+rows and how many seats per row the room has. Once
+initialized, the following menu will be shown:
 
-Quan l’aplicació s’executa, primer demanarà quantes 
-files i quants seients per fila té la sala. Un cop 
-inicialitzada, es mostrarà el següent menú:
-
-## 🛠 Tecnologies
+## 🛠 Technologies
 - Backend: Java
 
-## 🚀 Instal·lació i Execució
-1. Clonar el repositori: `git clone https://github.com/Quint3in/Tasca_S1.02.git`
-2. Execució de l'aplicació.
+## Installation and Execution
+1. Clone the repository: `git clone https://github.com/Quint3in/Tasca_S1.02.git`
+2. Go into the project folder: `cd Tasca_S1.02`
+3. Build the module you want (from the root). Example for `n2exercici1`:
+   `mvn -pl n2exercici1 -am package`
+4. Run it (from the root):
+   `java -cp n2exercici1/target/classes org.example.Main`
