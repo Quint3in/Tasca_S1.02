@@ -3,7 +3,7 @@ package org.example;
 import org.example.exception.EmptySaleException;
 
 public class Main {
-    static void main() {
+    public void main(String[] args) {
         Product product1 = new Product("product1",2.5);
         Product product2 = new Product("product2",10);
 

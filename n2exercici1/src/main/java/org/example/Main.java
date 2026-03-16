@@ -3,7 +3,7 @@ package org.example;
 import static org.example.ConsoleReader.*;
 
 public class Main {
-    static void main() {
+    public static void main(String[] args) {
         readDouble("Introdueix un número double: ");
         readInt("Introdueix un número int: ");
         readFloat("Introdueix un número float: ");
