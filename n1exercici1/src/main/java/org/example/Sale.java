@@ -21,8 +21,9 @@ public class Sale {
         try{
             return products.get(100);
         } catch(IndexOutOfBoundsException e){
-            throw new IndexOutOfBoundsException("Producte fora de la llista.");
+            System.err.println(e.getMessage());
         }
+        return null;
     }
 
     public double getTotalPrice() {

@@ -8,7 +8,7 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ConsoleReader {
-    final static private Scanner scanner = new Scanner(System.in);
+    final static private Scanner SCANNER = new Scanner(System.in);
     final static private String ERROR_MESSAGE = "Error de format. Torna-ho a provar.";
     final static private int MAX_STRING_LENGTH = 20;
 
@@ -16,11 +16,11 @@ public class ConsoleReader {
         while (true) {
             System.out.println(message);
             try {
-                return scanner.nextInt();
+                return SCANNER.nextInt();
             } catch (InputMismatchException e) {
                 System.out.println(ERROR_MESSAGE);
             } finally {
-                scanner.nextLine();
+                SCANNER.nextLine();
             }
         }
     }
@@ -28,11 +28,11 @@ public class ConsoleReader {
         while (true) {
             System.out.println(message);
             try {
-                return scanner.nextFloat();
+                return SCANNER.nextFloat();
             } catch (InputMismatchException e) {
                 System.out.println(ERROR_MESSAGE);
             } finally {
-                scanner.nextLine();
+                SCANNER.nextLine();
             }
         }
     }
@@ -40,11 +40,11 @@ public class ConsoleReader {
         while (true) {
             System.out.println(message);
             try {
-                return scanner.nextByte();
+                return SCANNER.nextByte();
             } catch (InputMismatchException e) {
                 System.out.println(ERROR_MESSAGE);
             } finally {
-                scanner.nextLine();
+                SCANNER.nextLine();
             }
         }
     }
@@ -52,11 +52,11 @@ public class ConsoleReader {
         while (true) {
             System.out.println(message);
             try {
-                return scanner.nextDouble();
+                return SCANNER.nextDouble();
             } catch (InputMismatchException e) {
                 System.out.println(ERROR_MESSAGE);
             } finally {
-                scanner.nextLine();
+                SCANNER.nextLine();
             }
         }
     }
@@ -66,7 +66,7 @@ public class ConsoleReader {
     public static char readChar(String message) {
         while (true) {
             System.out.println(message);
-            var str = scanner.nextLine();
+            var str = SCANNER.nextLine();
             try {
                 if (str.length() == 1) {
                     return str.charAt(0);
@@ -81,7 +81,7 @@ public class ConsoleReader {
     public static String readString(String message) {
         while (true) {
             System.out.println(message);
-            var str = scanner.nextLine().trim();
+            var str = SCANNER.nextLine().trim();
             try {
                 if (!str.isEmpty() && str.length() <= MAX_STRING_LENGTH) {
                     return str;
@@ -96,7 +96,7 @@ public class ConsoleReader {
     public static boolean readYesNo(String message) {
         while (true) {
             System.out.println(message);
-            var str = scanner.nextLine().trim();
+            var str = SCANNER.nextLine().trim();
             try {
                 if (str.equalsIgnoreCase("s")) {
                     return true;
